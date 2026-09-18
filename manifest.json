@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "jquery-url-inspector",
+  "version": "0.1.0",
+  "description": "Ловит jQuery-AJAX запросы по заданным правилам и показывает их URL с дописанными отладочными параметрами.",
+
+  "permissions": ["storage"],
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "action": {
+    "default_popup": "action/action.html",
+    "default_title": "jquery-url-inspector - правила перехвата",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": [
+        "shared/log.js",
+        "shared/messages.js",
+        "shared/url.js",
+        "shared/rules.js",
+        "storage/rules-store.js",
+        "storage/history-store.js",
+        "content/popup.js",
+        "content/index.js"
+      ]
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "shared/log.js",
+        "shared/messages.js",
+        "shared/url.js",
+        "page/interceptor.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "jquery-url-inspector@local",
+      "strict_min_version": "109.0"
+    }
+  }
+}

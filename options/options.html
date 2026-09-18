@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Настройки jquery-url-inspector</title>
+  <style>
+    body {
+      font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #1e1e2e;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 24px;
+    }
+
+    .wrap { max-width: 720px; margin: 0 auto; }
+
+    h1 { font-size: 18px; margin: 0 0 4px; color: #fff; }
+
+    .hint { color: #9aa0b0; font-size: 13px; margin: 0 0 20px; }
+
+    table { width: 100%; border-collapse: collapse; }
+
+    th {
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: #9aa0b0;
+      padding: 0 8px 6px 0;
+      font-weight: 600;
+    }
+
+    td { padding: 0 8px 8px 0; vertical-align: top; }
+    td:last-child, th:last-child { padding-right: 0; width: 1%; }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      font: 13px/1.4 ui-monospace, Menlo, Consolas, monospace;
+      background: #2a2a3c;
+      color: #cfd3e0;
+      border: 1px solid #3a3a4e;
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+
+    input:focus { outline: none; border-color: #4caf50; }
+
+    button {
+      font: inherit;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: #3a3a4e;
+      color: #cfd3e0;
+    }
+
+    button:hover { background: #4a4a60; }
+    button.primary { background: #4caf50; color: #fff; }
+    button.primary:hover { background: #5bbf60; }
+    button.remove { padding: 8px 12px; }
+
+    .actions { display: flex; gap: 8px; align-items: center; margin-top: 16px; }
+
+    .status { color: #7ee6a8; font-size: 13px; }
+    .status.error { color: #ff8a80; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Правила перехвата</h1>
+    <p class="hint">
+      Если URL AJAX-запроса содержит паттерн, расширение показывает ссылку
+      с дописанными параметрами - тот же URL, дополненный ими.
+      Сам запрос при этом не меняется.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Паттерн URL (вхождение подстроки)</th>
+          <th>Добавляемые параметры</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="rules"></tbody>
+    </table>
+
+    <div class="actions">
+      <button id="add">Добавить правило</button>
+      <button id="save" class="primary">Сохранить</button>
+      <span id="status" class="status"></span>
+    </div>
+  </div>
+
+  <script src="../shared/log.js"></script>
+  <script src="../shared/rules.js"></script>
+  <script src="../storage/rules-store.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
